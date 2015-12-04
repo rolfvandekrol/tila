@@ -16,3 +16,29 @@ part of Tila, that works perfectly fine.
   collection and which actions are actions that save the model instance. It also
   provides simple helpers to find out if the current action is in one of the
   lists.
+* __Modelable__: Provides an `model` helper so we can access the model that the
+  controller is for, and a few helpers to access model name.
+* __Messages__: Provide a simple helper for generating message strings from
+  I18n. Requires _Modelable_.
+* __Objects__: Provides a simple accessor for `@object` and `@objects`. The
+  _ResourceLoaders_ component registers the loaded resources here.
+* __Params__: Provides a way to update the attributes of the object and simple
+  starting point for filtering out the permitted resource params. Requires
+  _Modelable_, _Objects_.
+* __SaveDestroy__: Provides the `save_object` and `destroy_object` methods.
+  Requires _Objects_.
+* __FormHandler__: Provides methods to handle the submit of forms and the
+  destroy. Requires _Messages_, _Objects_, _SaveDestroy_. You need to define a
+  `location_after_save` and a `location_after_destroy` method, if you want to
+  use this module in isolation. The _Resourceful_ component defines these
+  methods for you.
+* __ResourceLoaders__: Provides methods for loading the resources. Requires
+  _Modelable_ and _Objects_.
+* __ResourcefulUrls__: Generates the URLs to the controller. Requires 
+  _Modelable_.
+* __Resourceful__: Implements the actual controller actions, registers the 
+  _before_action_ to load the resources. This is the part that you want to
+  include when you want to enjoy the full glory of Tila. Requires _Actionable_,
+  _Params_, _FormHandler_, _ResourceLoaders_ and _ResourcefulUrls_.
+
+
