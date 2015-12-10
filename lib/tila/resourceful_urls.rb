@@ -9,14 +9,22 @@ module Tila
 
     protected
 
+    def route_key_singular
+      model.model_name.element
+    end
+
+    def route_key_plural
+      route_key_singular.pluralize == route_key_singular ? "#{route_key_singular.pluralize}_index" : route_key_singular.pluralize
+    end
+
     def object_url(object = nil, options = {})
       target = object ? object : self.object
 
-      send "#{model.model_name.route_key.singularize}_url", target, options
+      send "#{route_key_singular}_url", target, options
     end
 
     def collection_url(options = {})
-      send "#{model.model_name.route_key}_url", options
+      send "#{route_key_plural}_url", options
     end
   end
 end
