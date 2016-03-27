@@ -1,15 +1,64 @@
 # Tila
 
+**Tila is a set of modules that help you create simple CRUD controller in Rails
+with very little code.**
+
 Most Rails projects contain a lot of controllers that are quite repetitive,
-because most controllers essentially what is needed to get a simple CRUD
-interface. This project contains components that can be used to build the 
+because those controllers essentially implement what is needed to get a simple 
+CRUD interface. This project contains components that can be used to build the 
 controller of this simple CRUD interface.
 
 Because Tila favors composition over inheritance, is allows for a flexibility
 that most other projects in this space don't have. If you only want to use a
 part of Tila, that works perfectly fine.
 
+## Installation
+
+Include Tila in your project by adding it to your `Gemfile`.
+
+```ruby
+gem 'tila'
+```
+
+Then run
+
+```bash
+bundle install
+```
+
+to make sure Tila is installed.
+
+## Usage
+
+After Tila is installed in your project, you can use it like this.
+
+```ruby
+class BunniesController < ApplicationController
+  include Tila::Resourceful
+
+  protected
+
+  def permitted_resource_params
+    resource_params.permit(:name, :fluffiness)
+  end
+end
+```
+
+This controllers will implement the basic CRUD actions (`index`, `show`, `edit`,
+`update`, `new` and `create`) for the `Bunny` model. You only need to specify
+the `permitted_resource_params` method to make sure only the expected parameters
+are passed into the resource. And you'll need to write your own views. Tila will
+automatically infer from the name of the controller class that this is a 
+controller for the `Bunny` model and will make sure you can use `@bunnies` in 
+the `index` view and `@bunny` in the other views.
+
 ## Components
+
+Tila favors composition of inheritance, so it contains a lot of small modules
+that can be used indepently. The example above only shows the result of
+including the `Tila::Resourceful` module, but you can choose to only include
+small parts of Tila. Below you can find a list of the components of Tila, with
+a short explanation of what they do and which other components they depend on.
 
 * __Actionable__: Provides an `action` helper so we can simply find out which
   action is called and contains a list of actions that are operated on
