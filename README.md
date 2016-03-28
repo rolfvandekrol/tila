@@ -3,7 +3,7 @@
 **Tila is a set of modules that help you create simple CRUD controller in Rails
 with very little code.**
 
-[![Gem Version](https://badge.fury.io/rb/tila.svg)](https://badge.fury.io/rb/tila)
+[![Gem Version](https://img.shields.io/gem/v/tila.svg)](https://rubygems.org/gems/tila)
 
 Most Rails projects contain a lot of controllers that are quite repetitive,
 because those controllers essentially implement what is needed to get a simple 
