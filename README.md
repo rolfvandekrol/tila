@@ -1,6 +1,6 @@
 # Tila
 
-**Tila is a set of modules that help you create simple CRUD controller in Rails
+**Tila is a set of modules that help you create simple CRUD controllers in Rails
 with very little code.**
 
 [![Gem Version](https://img.shields.io/gem/v/tila.svg)](https://rubygems.org/gems/tila)
