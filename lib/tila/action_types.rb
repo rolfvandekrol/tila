@@ -4,39 +4,65 @@ module Tila
     include Actionable
 
     included do
-      helper_method :collection_action?, :new_action?, :save_action?, :member_action?
+      helper_method :resources_action?, :persisted_resource_action?, :nonpersisted_resource_action?, :resource_action?, :save_action?, :tila_action?
     end
 
     class_methods do
-      def collection_actions
+      # Actions that operate on a set of resources
+      def resources_actions
         [:index]
       end
 
-      def new_actions
+      # Actions that operate on a single persisted resource
+      def persisted_resource_actions
+        [:show, :edit, :update]
+      end
+
+      # Actions that operate on a single not-yet-persisted resource
+      def nonpersisted_resource_actions
         [:new, :create]
       end
 
+      # Actions that operate on a single resource
+      def resource_actions
+        persisted_resource_actions + nonpersisted_resource_actions
+      end
+
+      # Actions that alter a single resource
       def save_actions
         [:create, :update]
+      end
+
+      # Actions that Tila should try to handle
+      def tila_actions
+        resource_actions + resources_actions
       end
     end
 
     protected
 
-    def collection_action?
-      self.class.collection_actions.include? action
+    def resources_action?
+      self.class.resources_actions.include? action
     end
 
-    def new_action?
-      self.class.new_actions.include? action
+    def persisted_resource_action?
+      self.class.persisted_resource_actions.include? action
+    end
+
+    def nonpersisted_resource_action?
+      self.class.nonpersisted_resource_actions.include? action
+    end
+
+    def resource_action?
+      self.class.resource_actions.include? action
     end
 
     def save_action?
       self.class.save_actions.include? action
     end
 
-    def member_action?
-      !collection_action?
+    def tila_action?
+      self.class.tila_actions.include? action
     end
   end
 end
