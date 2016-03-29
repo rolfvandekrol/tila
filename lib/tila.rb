@@ -1,5 +1,6 @@
 module Tila
   autoload :Actionable, 'tila/actionable'
+  autoload :ActionTypes, 'tila/action_types'
   autoload :Modelable,  'tila/modelable'
   autoload :Messages, 'tila/messages'
   autoload :Objects, 'tila/objects'

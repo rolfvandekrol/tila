@@ -1,7 +1,7 @@
 module Tila
   module Resourceful
     extend ActiveSupport::Concern
-    include Actionable
+    include ActionTypes
     include Params
     include FormHandler
     include ResourceLoaders
