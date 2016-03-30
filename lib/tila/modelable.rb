@@ -21,6 +21,7 @@ module Tila
     def object_name
       model.model_name.element
     end
+
     def objects_name
       object_name.pluralize
     end
