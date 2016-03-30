@@ -63,10 +63,9 @@ small parts of Tila. Below you can find a list of the components of Tila, with
 a short explanation of what they do and which other components they depend on.
 
 * __Actionable__: Provides an `action` helper so we can simply find out which
-  action is called and contains a list of actions that are operated on
-  collection and which actions are actions that save the model instance. It also
-  provides simple helpers to find out if the current action is in one of the
-  lists.
+  action is called.
+* __ActionTypes__: Provides lists of actions and helpers that allows us to
+  figure out what type of action we are dealing with. Requires _Actionable_.
 * __Modelable__: Provides an `model` helper so we can access the model that the
   controller is for, and a few helpers to access model name.
 * __Messages__: Provide a simple helper for generating message strings from
