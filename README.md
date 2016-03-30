@@ -6,8 +6,8 @@ with very little code.**
 [![Gem Version](https://img.shields.io/gem/v/tila.svg)](https://rubygems.org/gems/tila)
 
 Most Rails projects contain a lot of controllers that are quite repetitive,
-because those controllers essentially implement what is needed to get a simple 
-CRUD interface. This project contains components that can be used to build the 
+because those controllers essentially implement what is needed to get a simple
+CRUD interface. This project contains components that can be used to build the
 controller of this simple CRUD interface.
 
 Because Tila favors composition over inheritance, is allows for a flexibility
@@ -50,8 +50,8 @@ This controllers will implement the basic CRUD actions (`index`, `show`, `edit`,
 `update`, `new` and `create`) for the `Bunny` model. You only need to specify
 the `permitted_resource_params` method to make sure only the expected parameters
 are passed into the resource. And you'll need to write your own views. Tila will
-automatically infer from the name of the controller class that this is a 
-controller for the `Bunny` model and will make sure you can use `@bunnies` in 
+automatically infer from the name of the controller class that this is a
+controller for the `Bunny` model and will make sure you can use `@bunnies` in
 the `index` view and `@bunny` in the other views.
 
 ## Components
@@ -84,9 +84,9 @@ a short explanation of what they do and which other components they depend on.
   methods for you.
 * __ResourceLoaders__: Provides methods for loading the resources. Requires
   _Modelable_ and _Objects_.
-* __ResourcefulUrls__: Generates the URLs to the controller. Requires 
+* __ResourcefulUrls__: Generates the URLs to the controller. Requires
   _Modelable_.
-* __Resourceful__: Implements the actual controller actions, registers the 
+* __Resourceful__: Implements the actual controller actions, registers the
   _before_action_ to load the resources. This is the part that you want to
   include when you want to enjoy the full glory of Tila. Requires _Actionable_,
   _Params_, _FormHandler_, _ResourceLoaders_ and _ResourcefulUrls_.
