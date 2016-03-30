@@ -19,7 +19,7 @@ module Tila
     end
 
     def object_name
-      self.class.model.model_name.element
+      model.model_name.element
     end
     def objects_name
       object_name.pluralize
