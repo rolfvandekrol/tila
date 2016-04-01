@@ -3,7 +3,7 @@ module Tila
     extend ActiveSupport::Concern
 
     included do
-      helper_method :model, :object_name, :objects_name, :model_name
+      helper_method :model, :resource_name, :resources_name, :model_name
     end
 
     class_methods do
@@ -18,12 +18,12 @@ module Tila
       self.class.model
     end
 
-    def object_name
+    def resource_name
       model.model_name.element
     end
 
-    def objects_name
-      object_name.pluralize
+    def resources_name
+      resource_name.pluralize
     end
 
     def model_name

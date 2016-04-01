@@ -5,8 +5,8 @@ describe Tila::Modelable, type: :controller do
 
     def test_action
       @model = model
-      @object_name = object_name
-      @objects_name = objects_name
+      @resource_name = resource_name
+      @resources_name = resources_name
       @model_name = model_name
       render 'shared/empty'
     end
@@ -17,8 +17,8 @@ describe Tila::Modelable, type: :controller do
     get :test_action
 
     expect(assigns(:model)).to eq(Admin::Bunny)
-    expect(assigns(:object_name)).to eq('bunny')
-    expect(assigns(:objects_name)).to eq('bunnies')
+    expect(assigns(:resource_name)).to eq('bunny')
+    expect(assigns(:resources_name)).to eq('bunnies')
     expect(assigns(:model_name)).to eq('admin_bunny')
   end
 end
