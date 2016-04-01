@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    messages:
+      bunny:
+        moo: 'Test message'
