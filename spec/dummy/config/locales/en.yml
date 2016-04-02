@@ -22,7 +22,7 @@
 en:
   hello: "Hello world"
 
-  activerecord:
+  activemodel:
     messages:
       bunny:
         moo: 'Test message'

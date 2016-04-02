@@ -4,7 +4,6 @@ describe Tila::Messages, type: :controller do
     include Tila::Messages
 
     def test_action
-      @message_base_scope = message_base_scope
       @message_scope = message_scope
       @message = message('moo')
       render 'shared/empty'
@@ -15,8 +14,7 @@ describe Tila::Messages, type: :controller do
     routes.draw { get "test_action" => "bunnies#test_action" }
     get :test_action
 
-    expect(assigns(:message_base_scope)).to eq([:activerecord, :messages])
-    expect(assigns(:message_scope)).to eq([:activerecord, :messages, 'bunny'])
+    expect(assigns(:message_scope)).to eq([:activemodel, :messages, 'bunny'])
     expect(assigns(:message)).to eq('Test message')
   end
 end

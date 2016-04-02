@@ -69,7 +69,9 @@ a short explanation of what they do and which other components they depend on.
 * __Modelable__: Provides an `model` helper so we can access the model that the
   controller is for, and a few helpers to access model name.
 * __Messages__: Provide a simple helper for generating message strings from
-  I18n. Requires _Modelable_.
+  I18n. It expects the model to have a `i18n_scope` method. ORM's like
+  ActiveRecord and DataMapper, and even ActiveModel define this method. Requires
+  _Modelable_.
 * __Objects__: Provides a simple accessor for `@object` and `@objects`. The
   _ResourceLoaders_ component registers the loaded resources here.
 * __Params__: Provides a way to update the attributes of the object and simple

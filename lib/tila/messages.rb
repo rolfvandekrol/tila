@@ -14,11 +14,7 @@ module Tila
     end
 
     def message_scope
-      message_base_scope + [model_name]
-    end
-
-    def message_base_scope
-      [:activerecord, :messages]
+      [model.i18n_scope, :messages, model_name]
     end
   end
 end
