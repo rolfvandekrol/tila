@@ -72,8 +72,6 @@ a short explanation of what they do and which other components they depend on.
   I18n. It expects the model to have a `i18n_scope` method. ORM's like
   ActiveRecord and DataMapper, and even ActiveModel define this method. Requires
   _Modelable_.
-* __Objects__: Provides a simple accessor for `@object` and `@objects`. The
-  _ResourceLoaders_ component registers the loaded resources here.
 * __Params__: Provides a way to update the attributes of the object and simple
   starting point for filtering out the permitted resource params. Requires
   _Modelable_, _Objects_.
