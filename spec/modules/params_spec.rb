@@ -76,3 +76,35 @@ describe Tila::Messages, type: :controller do
     expect(assigns(:permitted_resource_params)[:name]).to eq('Oliver')
   end
 end
+
+describe Tila::Messages, type: :controller do
+  controller(BunniesController) do
+    include Tila::Params
+
+    def test_action
+      update_resource_params(bunny)
+      render 'shared/empty'
+    end
+
+    protected
+
+    def bunny
+      @bunny ||= Bunny.new
+    end
+
+    def permitted_resource_params_list
+      [:name]
+    end
+  end
+
+  it 'exposes the correct helpers' do
+    routes.draw {
+      get "test_action" => "bunnies#test_action"
+    }
+
+    get :test_action, {bunny: {name: 'Oliver', fluffiness: 42}}
+    expect(assigns(:bunny)).to be_a Bunny
+    expect(assigns(:bunny).name).to eq('Oliver')
+    expect(assigns(:bunny).fluffiness).to be_nil
+  end
+end
