@@ -1,5 +1,5 @@
 
-describe Tila::Messages, type: :controller do
+describe Tila::Params, type: :controller do
   controller(BunniesController) do
     include Tila::Params
 
@@ -42,7 +42,7 @@ describe Tila::Messages, type: :controller do
   end
 end
 
-describe Tila::Messages, type: :controller do
+describe Tila::Params, type: :controller do
   controller(BunniesController) do
     include Tila::Params
 
@@ -77,7 +77,7 @@ describe Tila::Messages, type: :controller do
   end
 end
 
-describe Tila::Messages, type: :controller do
+describe Tila::Params, type: :controller do
   controller(BunniesController) do
     include Tila::Params
 
