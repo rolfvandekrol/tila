@@ -26,7 +26,7 @@ module Tila
       resource_params.permit(*permitted_resource_params_list)
     end
 
-    def update_resource_params
+    def update_resource_params(resource)
       resource.attributes = permitted_resource_params
     end
   end
