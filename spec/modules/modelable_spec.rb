@@ -1,6 +1,6 @@
 
 describe Tila::Modelable, type: :controller do
-  context 'included in root level controller', type: :controller do
+  context 'when included in a root level controller', type: :controller do
     controller(BunniesController) do
       include Tila::Modelable
 
@@ -50,7 +50,7 @@ describe Tila::Modelable, type: :controller do
     end
   end
 
-  context 'included in namespaced controller', type: :controller do
+  context 'when included in a namespaced controller', type: :controller do
     controller(Admin::BunniesController) do
       include Tila::Modelable
 
