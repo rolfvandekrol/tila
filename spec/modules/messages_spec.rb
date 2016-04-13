@@ -10,11 +10,19 @@ describe Tila::Messages, type: :controller do
     end
   end
 
-  it 'exposes the correct helpers' do
-    routes.draw { get "test_action" => "bunnies#test_action" }
-    get :test_action
+  describe '#message_scope' do
+    it 'derives the scope from the model' do
+      routes.draw { get "test_action" => "bunnies#test_action" }
+      get :test_action
+      expect(assigns(:message_scope)).to eq([:activemodel, :messages, 'bunny'])
+    end
+  end
 
-    expect(assigns(:message_scope)).to eq([:activemodel, :messages, 'bunny'])
-    expect(assigns(:message)).to eq('Test message')
+  describe '#message' do
+    it 'retrieves the message from the locale' do
+      routes.draw { get "test_action" => "bunnies#test_action" }
+      get :test_action
+      expect(assigns(:message)).to eq('Test message')
+    end
   end
 end
