@@ -22,87 +22,309 @@ describe Tila::ActionTypes, type: :controller do
     end
   end
 
-  it 'recognizes index correctly' do
-    routes.draw { get "index" => "anonymous#index" }
-    get :index
+  describe '#resources_action?' do
+    it 'accepts index as a resources action' do
+      routes.draw { get "index" => "anonymous#index" }
+      get :index
 
-    expect(assigns(:resources_action)).to be true
-    expect(assigns(:persisted_resource_action)).to be false
-    expect(assigns(:nonpersisted_resource_action)).to be false
-    expect(assigns(:resource_action)).to be false
-    expect(assigns(:save_action)).to be false
-    expect(assigns(:tila_action)).to be true
+      expect(assigns(:resources_action)).to be true
+    end
+
+    it 'rejects show as a resources action' do
+      routes.draw { get "show" => "anonymous#show" }
+      get :show
+
+      expect(assigns(:resources_action)).to be false
+    end
+
+    it 'rejects edit as a resources action' do
+      routes.draw { get "edit" => "anonymous#edit" }
+      get :edit
+
+      expect(assigns(:resources_action)).to be false
+    end
+
+    it 'rejects update as a resources action' do
+      routes.draw { get "update" => "anonymous#update" }
+      get :update
+
+      expect(assigns(:resources_action)).to be false
+    end
+
+    it 'rejects new as a resources action' do
+      routes.draw { get "new" => "anonymous#new" }
+      get :new
+
+      expect(assigns(:resources_action)).to be false
+    end
+
+    it 'rejects create as a resources action' do
+      routes.draw { get "create" => "anonymous#create" }
+      get :create
+
+      expect(assigns(:resources_action)).to be false
+    end
+
+    it 'rejects moo_action as a resources action' do
+      routes.draw { get "moo_action" => "anonymous#moo_action" }
+      get :moo_action
+
+      expect(assigns(:resources_action)).to be false
+    end
   end
 
-  it 'recognizes show correctly' do
-    routes.draw { get "show" => "anonymous#show" }
-    get :show
+  describe '#persisted_resource_action?' do
+    it 'rejects index as a persisted resource action' do
+      routes.draw { get "index" => "anonymous#index" }
+      get :index
 
-    expect(assigns(:resources_action)).to be false
-    expect(assigns(:persisted_resource_action)).to be true
-    expect(assigns(:nonpersisted_resource_action)).to be false
-    expect(assigns(:resource_action)).to be true
-    expect(assigns(:save_action)).to be false
-    expect(assigns(:tila_action)).to be true
+      expect(assigns(:persisted_resource_action)).to be false
+    end
+
+    it 'accepts show as a persisted resource action' do
+      routes.draw { get "show" => "anonymous#show" }
+      get :show
+
+      expect(assigns(:persisted_resource_action)).to be true
+    end
+
+    it 'accepts edit as a persisted resource action' do
+      routes.draw { get "edit" => "anonymous#edit" }
+      get :edit
+
+      expect(assigns(:persisted_resource_action)).to be true
+    end
+
+    it 'accepts update as a persisted resource action' do
+      routes.draw { get "update" => "anonymous#update" }
+      get :update
+
+      expect(assigns(:persisted_resource_action)).to be true
+    end
+
+    it 'rejects new as a persisted resource action' do
+      routes.draw { get "new" => "anonymous#new" }
+      get :new
+
+      expect(assigns(:persisted_resource_action)).to be false
+    end
+
+    it 'rejects create as a persisted resource action' do
+      routes.draw { get "create" => "anonymous#create" }
+      get :create
+
+      expect(assigns(:persisted_resource_action)).to be false
+    end
+
+    it 'rejects moo_action as a persisted resource action' do
+      routes.draw { get "moo_action" => "anonymous#moo_action" }
+      get :moo_action
+
+      expect(assigns(:persisted_resource_action)).to be false
+    end
   end
 
-  it 'recognizes edit correctly' do
-    routes.draw { get "edit" => "anonymous#edit" }
-    get :edit
+  describe '#nonpersisted_resource_action?' do
+    it 'rejects index as a non persisted resource action' do
+      routes.draw { get "index" => "anonymous#index" }
+      get :index
 
-    expect(assigns(:resources_action)).to be false
-    expect(assigns(:persisted_resource_action)).to be true
-    expect(assigns(:nonpersisted_resource_action)).to be false
-    expect(assigns(:resource_action)).to be true
-    expect(assigns(:save_action)).to be false
-    expect(assigns(:tila_action)).to be true
+      expect(assigns(:nonpersisted_resource_action)).to be false
+    end
+
+    it 'rejects show as a non persisted resource action' do
+      routes.draw { get "show" => "anonymous#show" }
+      get :show
+
+      expect(assigns(:nonpersisted_resource_action)).to be false
+    end
+
+    it 'rejects edit as a non persisted resource action' do
+      routes.draw { get "edit" => "anonymous#edit" }
+      get :edit
+
+      expect(assigns(:nonpersisted_resource_action)).to be false
+    end
+
+    it 'rejects update as a non persisted resource action' do
+      routes.draw { get "update" => "anonymous#update" }
+      get :update
+
+      expect(assigns(:nonpersisted_resource_action)).to be false
+    end
+
+    it 'accepts new as a non persisted resource action' do
+      routes.draw { get "new" => "anonymous#new" }
+      get :new
+
+      expect(assigns(:nonpersisted_resource_action)).to be true
+    end
+
+    it 'accepts create as a non persisted resource action' do
+      routes.draw { get "create" => "anonymous#create" }
+      get :create
+
+      expect(assigns(:nonpersisted_resource_action)).to be true
+    end
+
+    it 'rejects moo_action as a non persisted resource action' do
+      routes.draw { get "moo_action" => "anonymous#moo_action" }
+      get :moo_action
+
+      expect(assigns(:nonpersisted_resource_action)).to be false
+    end
   end
 
-  it 'recognizes update correctly' do
-    routes.draw { get "update" => "anonymous#update" }
-    get :update
+  describe '#resource_action?' do
+    it 'rejects index as a resource action' do
+      routes.draw { get "index" => "anonymous#index" }
+      get :index
 
-    expect(assigns(:resources_action)).to be false
-    expect(assigns(:persisted_resource_action)).to be true
-    expect(assigns(:nonpersisted_resource_action)).to be false
-    expect(assigns(:resource_action)).to be true
-    expect(assigns(:save_action)).to be true
-    expect(assigns(:tila_action)).to be true
+      expect(assigns(:resource_action)).to be false
+    end
+
+    it 'accepts show as a resource action' do
+      routes.draw { get "show" => "anonymous#show" }
+      get :show
+
+      expect(assigns(:resource_action)).to be true
+    end
+
+    it 'accepts edit as a resource action' do
+      routes.draw { get "edit" => "anonymous#edit" }
+      get :edit
+
+      expect(assigns(:resource_action)).to be true
+    end
+
+    it 'accepts update as a resource action' do
+      routes.draw { get "update" => "anonymous#update" }
+      get :update
+
+      expect(assigns(:resource_action)).to be true
+    end
+
+    it 'accepts new as a resource action' do
+      routes.draw { get "new" => "anonymous#new" }
+      get :new
+
+      expect(assigns(:resource_action)).to be true
+    end
+
+    it 'accepts create as a resource action' do
+      routes.draw { get "create" => "anonymous#create" }
+      get :create
+
+      expect(assigns(:resource_action)).to be true
+    end
+
+    it 'rejects moo_action as a resource action' do
+      routes.draw { get "moo_action" => "anonymous#moo_action" }
+      get :moo_action
+
+      expect(assigns(:resource_action)).to be false
+    end
   end
 
-  it 'recognizes new correctly' do
-    routes.draw { get "new" => "anonymous#new" }
-    get :new
+  describe '#save_action?' do
+    it 'rejects index as a save action' do
+      routes.draw { get "index" => "anonymous#index" }
+      get :index
 
-    expect(assigns(:resources_action)).to be false
-    expect(assigns(:persisted_resource_action)).to be false
-    expect(assigns(:nonpersisted_resource_action)).to be true
-    expect(assigns(:resource_action)).to be true
-    expect(assigns(:save_action)).to be false
-    expect(assigns(:tila_action)).to be true
+      expect(assigns(:save_action)).to be false
+    end
+
+    it 'rejects show as a save action' do
+      routes.draw { get "show" => "anonymous#show" }
+      get :show
+
+      expect(assigns(:save_action)).to be false
+    end
+
+    it 'rejects edit as a save action' do
+      routes.draw { get "edit" => "anonymous#edit" }
+      get :edit
+
+      expect(assigns(:save_action)).to be false
+    end
+
+    it 'accepts update as a save action' do
+      routes.draw { get "update" => "anonymous#update" }
+      get :update
+
+      expect(assigns(:save_action)).to be true
+    end
+
+    it 'rejects new as a save action' do
+      routes.draw { get "new" => "anonymous#new" }
+      get :new
+
+      expect(assigns(:save_action)).to be false
+    end
+
+    it 'accepts create as a save action' do
+      routes.draw { get "create" => "anonymous#create" }
+      get :create
+
+      expect(assigns(:save_action)).to be true
+    end
+
+    it 'rejects moo_action as a save action' do
+      routes.draw { get "moo_action" => "anonymous#moo_action" }
+      get :moo_action
+
+      expect(assigns(:save_action)).to be false
+    end
   end
 
-  it 'recognizes create correctly' do
-    routes.draw { get "create" => "anonymous#create" }
-    get :create
+  describe '#tila_action?' do
+    it 'accepts index as a Tila action' do
+      routes.draw { get "index" => "anonymous#index" }
+      get :index
 
-    expect(assigns(:resources_action)).to be false
-    expect(assigns(:persisted_resource_action)).to be false
-    expect(assigns(:nonpersisted_resource_action)).to be true
-    expect(assigns(:resource_action)).to be true
-    expect(assigns(:save_action)).to be true
-    expect(assigns(:tila_action)).to be true
-  end
+      expect(assigns(:tila_action)).to be true
+    end
 
-  it 'recognizes moo_action correctly' do
-    routes.draw { get "moo_action" => "anonymous#moo_action" }
-    get :moo_action
+    it 'accepts show as a Tila action' do
+      routes.draw { get "show" => "anonymous#show" }
+      get :show
 
-    expect(assigns(:resources_action)).to be false
-    expect(assigns(:persisted_resource_action)).to be false
-    expect(assigns(:nonpersisted_resource_action)).to be false
-    expect(assigns(:resource_action)).to be false
-    expect(assigns(:save_action)).to be false
-    expect(assigns(:tila_action)).to be false
+      expect(assigns(:tila_action)).to be true
+    end
+
+    it 'accepts edit as a Tila action' do
+      routes.draw { get "edit" => "anonymous#edit" }
+      get :edit
+
+      expect(assigns(:tila_action)).to be true
+    end
+
+    it 'accepts update as a Tila action' do
+      routes.draw { get "update" => "anonymous#update" }
+      get :update
+
+      expect(assigns(:tila_action)).to be true
+    end
+
+    it 'accepts new as a Tila action' do
+      routes.draw { get "new" => "anonymous#new" }
+      get :new
+
+      expect(assigns(:tila_action)).to be true
+    end
+
+    it 'accepts create as a Tila action' do
+      routes.draw { get "create" => "anonymous#create" }
+      get :create
+
+      expect(assigns(:tila_action)).to be true
+    end
+
+    it 'rejects moo_action as a Tila action' do
+      routes.draw { get "moo_action" => "anonymous#moo_action" }
+      get :moo_action
+
+      expect(assigns(:tila_action)).to be false
+    end
   end
 end
