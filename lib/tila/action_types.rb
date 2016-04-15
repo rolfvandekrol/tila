@@ -1,7 +1,6 @@
 module Tila
   module ActionTypes
     extend ActiveSupport::Concern
-    include Actionable
 
     included do
       helper_method :resources_action?,
