@@ -1,15 +1,15 @@
 
-describe Tila::Actionable do
-  describe '#action', type: :controller do
-    controller(ApplicationController) do
-      include Tila::Actionable
+describe Tila::Actionable, type: :controller do
+  controller(ApplicationController) do
+    include Tila::Actionable
 
-      def test_action
-        @action = action
-        render 'shared/empty'
-      end
+    def test_action
+      @action = action
+      render 'shared/empty'
     end
+  end
 
+  describe '#action' do
     it 'returns the current action' do
       routes.draw { get "test_action" => "anonymous#test_action" }
       get :test_action
