@@ -1,7 +1,6 @@
 module Tila
   module Params
     extend ActiveSupport::Concern
-    include Modelable
 
     included do
       helper_method :resource_params_name, :resource_params,
