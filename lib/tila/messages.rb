@@ -1,7 +1,6 @@
 module Tila
   module Messages
     extend ActiveSupport::Concern
-    include Modelable
 
     included do
       helper_method :message, :message_scope, :message_base_scope
@@ -14,7 +13,7 @@ module Tila
     end
 
     def message_scope
-      [model.i18n_scope, :messages, model_name]
+      [model.i18n_scope, :messages, model.model_name.i18n_key]
     end
   end
 end
