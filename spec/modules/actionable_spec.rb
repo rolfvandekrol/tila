@@ -11,7 +11,7 @@ describe Tila::Actionable, type: :controller do
 
   describe '#action' do
     it 'returns the current action' do
-      routes.draw { get "test_action" => "anonymous#test_action" }
+      routes.draw { get 'test_action' => 'anonymous#test_action' }
       get :test_action
 
       expect(assigns(:action)).to eq(:test_action)

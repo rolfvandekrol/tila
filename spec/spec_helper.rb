@@ -1,7 +1,7 @@
 
-ENV["RAILS_ENV"] = "test"
-require File.expand_path("../../spec/dummy/config/environment.rb",  __FILE__)
-ActiveRecord::Migrator.migrations_paths = [File.expand_path("../../spec/dummy/db/migrate", __FILE__)]
+ENV['RAILS_ENV'] = 'test'
+require File.expand_path('../../spec/dummy/config/environment.rb', __FILE__)
+ActiveRecord::Migrator.migrations_paths = [File.expand_path('../../spec/dummy/db/migrate', __FILE__)]
 
 require 'tila'
 require 'rails/all'
@@ -24,11 +24,7 @@ RSpec.configure do |config|
   config.order = :random
 end
 
-
-
 # # Configure Rails Environment
-
-
 
 # require "rails/test_help"
 

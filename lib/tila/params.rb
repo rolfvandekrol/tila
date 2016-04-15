@@ -4,7 +4,7 @@ module Tila
 
     included do
       helper_method :resource_params_name, :resource_params,
-        :permitted_resource_params_list, :permitted_resource_params
+                    :permitted_resource_params_list, :permitted_resource_params
     end
 
     protected
@@ -18,7 +18,7 @@ module Tila
     end
 
     def permitted_resource_params_list
-      raise NotImplementedError, "The permitted_resource_params_list method should be overriden"
+      raise NotImplementedError.new('The permitted_resource_params_list method should be overriden')
     end
 
     def permitted_resource_params

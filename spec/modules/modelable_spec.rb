@@ -15,7 +15,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#model' do
       it 'returns the model derived from the controller name' do
-        routes.draw { get "test_action" => "bunnies#test_action" }
+        routes.draw { get 'test_action' => 'bunnies#test_action' }
         get :test_action
 
         expect(assigns(:model)).to eq(Bunny)
@@ -24,7 +24,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#resource_name' do
       it 'returns the resource name derived from the controller name' do
-        routes.draw { get "test_action" => "bunnies#test_action" }
+        routes.draw { get 'test_action' => 'bunnies#test_action' }
         get :test_action
 
         expect(assigns(:resource_name)).to eq('bunny')
@@ -33,7 +33,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#resources_name' do
       it 'returns the resources name derived from the controller name' do
-        routes.draw { get "test_action" => "bunnies#test_action" }
+        routes.draw { get 'test_action' => 'bunnies#test_action' }
         get :test_action
 
         expect(assigns(:resources_name)).to eq('bunnies')
@@ -42,7 +42,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#model_name' do
       it 'returns the model name derived from the controller name' do
-        routes.draw { get "test_action" => "bunnies#test_action" }
+        routes.draw { get 'test_action' => 'bunnies#test_action' }
         get :test_action
 
         expect(assigns(:model_name)).to eq('bunny')
@@ -65,7 +65,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#model' do
       it 'returns the namespaced model derived from the controller name' do
-        routes.draw { get "test_action" => "admin/bunnies#test_action" }
+        routes.draw { get 'test_action' => 'admin/bunnies#test_action' }
         get :test_action
 
         expect(assigns(:model)).to eq(Admin::Bunny)
@@ -74,7 +74,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#resource_name' do
       it 'returns the resource name derived from the controller name, without the namespace' do
-        routes.draw { get "test_action" => "admin/bunnies#test_action" }
+        routes.draw { get 'test_action' => 'admin/bunnies#test_action' }
         get :test_action
 
         expect(assigns(:resource_name)).to eq('bunny')
@@ -83,7 +83,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#resources_name' do
       it 'returns the resources name derived from the controller name, without the namespace' do
-        routes.draw { get "test_action" => "admin/bunnies#test_action" }
+        routes.draw { get 'test_action' => 'admin/bunnies#test_action' }
         get :test_action
 
         expect(assigns(:resources_name)).to eq('bunnies')
@@ -92,7 +92,7 @@ describe Tila::Modelable, type: :controller do
 
     describe '#model_name' do
       it 'returns the model name derived from the controller name, including the namespace' do
-        routes.draw { get "test_action" => "admin/bunnies#test_action" }
+        routes.draw { get 'test_action' => 'admin/bunnies#test_action' }
         get :test_action
 
         expect(assigns(:model_name)).to eq('admin_bunny')

@@ -33,7 +33,7 @@ describe Tila::Params, type: :controller do
 
     describe '#resource_params_name' do
       it 'returns the resource params name from the model' do
-        routes.draw { get "test_action1" => "anonymous#test_action1" }
+        routes.draw { get 'test_action1' => 'anonymous#test_action1' }
         get :test_action1
         expect(assigns(:resource_params_name)).to eq('bunny')
       end
@@ -41,8 +41,8 @@ describe Tila::Params, type: :controller do
 
     describe '#resource_params' do
       it 'returns the resource params from the params' do
-        routes.draw { get "test_action2" => "anonymous#test_action2" }
-        get :test_action2, {bunny: {name: 'Oliver', fluffiness: 42}}
+        routes.draw { get 'test_action2' => 'anonymous#test_action2' }
+        get :test_action2, bunny: { name: 'Oliver', fluffiness: 42 }
         expect(assigns(:resource_params)).to be_a(Hash)
         expect(assigns(:resource_params)[:fluffiness]).to eq('42')
         expect(assigns(:resource_params)[:name]).to eq('Oliver')
@@ -51,19 +51,19 @@ describe Tila::Params, type: :controller do
 
     describe '#permitted_resource_params_list' do
       it 'raises a NotImplementedError' do
-        routes.draw { get "test_action_raise1" => "anonymous#test_action_raise1" }
-        expect {
-          get :test_action_raise1, {bunny: {name: 'Oliver'}}
-        }.to raise_error(NotImplementedError)
+        routes.draw { get 'test_action_raise1' => 'anonymous#test_action_raise1' }
+        expect do
+          get :test_action_raise1, bunny: { name: 'Oliver' }
+        end.to raise_error(NotImplementedError)
       end
     end
 
     describe '#permitted_resource_params' do
       it 'raises a NotImplementedError' do
-        routes.draw { get "test_action_raise2" => "anonymous#test_action_raise2" }
-        expect {
-          get :test_action_raise2, {bunny: {name: 'Oliver'}}
-        }.to raise_error(NotImplementedError)
+        routes.draw { get 'test_action_raise2' => 'anonymous#test_action_raise2' }
+        expect do
+          get :test_action_raise2, bunny: { name: 'Oliver' }
+        end.to raise_error(NotImplementedError)
       end
     end
   end
@@ -95,7 +95,7 @@ describe Tila::Params, type: :controller do
 
     describe '#permitted_resource_params_list' do
       it 'returns the list of permitted resource param names' do
-        routes.draw { get "test_action1" => "anonymous#test_action1" }
+        routes.draw { get 'test_action1' => 'anonymous#test_action1' }
         get :test_action1
         expect(assigns(:permitted_resource_params_list)).to eq([:name])
       end
@@ -103,8 +103,8 @@ describe Tila::Params, type: :controller do
 
     describe '#permitted_resource_params' do
       it 'returns the permitted resource params from the params' do
-        routes.draw { get "test_action2" => "anonymous#test_action2" }
-        get :test_action2, {bunny: {name: 'Oliver', fluffiness: 42}}
+        routes.draw { get 'test_action2' => 'anonymous#test_action2' }
+        get :test_action2, bunny: { name: 'Oliver', fluffiness: 42 }
         expect(assigns(:permitted_resource_params)).to be_a(Hash)
         expect(assigns(:permitted_resource_params)).to have_key(:name)
         expect(assigns(:permitted_resource_params)).not_to have_key(:fluffiness)

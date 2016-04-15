@@ -4,8 +4,8 @@ module Tila
 
     included do
       helper_method :resources_action?,
-        :persisted_resource_action?, :nonpersisted_resource_action?,
-        :resource_action?, :save_action?, :tila_action?
+                    :persisted_resource_action?, :nonpersisted_resource_action?,
+                    :resource_action?, :save_action?, :tila_action?
     end
 
     class_methods do

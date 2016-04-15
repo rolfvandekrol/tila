@@ -18,7 +18,7 @@ describe Tila::Messages, type: :controller do
 
   describe '#message_scope' do
     it 'derives the scope from the model' do
-      routes.draw { get "test_action" => "anonymous#test_action" }
+      routes.draw { get 'test_action' => 'anonymous#test_action' }
       get :test_action
       expect(assigns(:message_scope)).to eq([:activemodel, :messages, :bunny])
     end
@@ -26,7 +26,7 @@ describe Tila::Messages, type: :controller do
 
   describe '#message' do
     it 'retrieves the message from the locale' do
-      routes.draw { get "test_action" => "anonymous#test_action" }
+      routes.draw { get 'test_action' => 'anonymous#test_action' }
       get :test_action
       expect(assigns(:message)).to eq('Test message')
     end
