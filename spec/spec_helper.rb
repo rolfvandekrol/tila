@@ -7,6 +7,8 @@ require 'tila'
 require 'rails/all'
 require 'rspec/rails'
 
+ActiveRecord::Migration.maintain_test_schema!
+
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
