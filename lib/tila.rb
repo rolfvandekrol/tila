@@ -6,7 +6,8 @@ module Tila
   autoload :Messages, 'tila/messages'
   autoload :Params, 'tila/params'
 
-  autoload :SaveDestroy, 'tila/save_destroy'
+  autoload :Storage, 'tila/storage'
+
   autoload :FormHandler, 'tila/form_handler'
 
   autoload :ResourceLoaders, 'tila/resource_loaders'
