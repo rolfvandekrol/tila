@@ -8,7 +8,7 @@ module Tila
 
   autoload :Storage, 'tila/storage'
 
-  autoload :FormHandler, 'tila/form_handler'
+  autoload :ActionHandlers, 'tila/action_handlers'
 
   autoload :ResourceLoaders, 'tila/resource_loaders'
   autoload :ResourcefulUrls, 'tila/resourceful_urls'
