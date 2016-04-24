@@ -9,6 +9,7 @@ describe Tila::ActionHandlers, type: :controller do
         def test_action
           handle_form_submit(
             Kitten.new(name: 'Pippin'),
+            {},
             'shared/empty',
             'Kittens are fluffy',
             '/'
@@ -19,6 +20,9 @@ describe Tila::ActionHandlers, type: :controller do
 
         def persist_resource(resource)
           resource.save
+        end
+
+        def update_resource_attributes(resource, attributes)
         end
       end
 
@@ -53,6 +57,7 @@ describe Tila::ActionHandlers, type: :controller do
         def test_action
           handle_form_submit(
             Kitten.new(name: 'Pippin'),
+            {},
             'shared/empty',
             'Kittens are fluffy',
             '/'
@@ -63,6 +68,9 @@ describe Tila::ActionHandlers, type: :controller do
 
         def persist_resource(resource)
           false
+        end
+
+        def update_resource_attributes(resource, attributes)
         end
       end
 

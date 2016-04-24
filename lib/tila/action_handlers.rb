@@ -2,7 +2,9 @@ module Tila
   module ActionHandlers
     protected
 
-    def handle_form_submit(resource, error_view, message, location_after_save)
+    def handle_form_submit(resource, attributes, error_view, message, location_after_save)
+      update_resource_attributes(resource, attributes)
+
       respond_to do |format|
         if persist_resource(resource)
           format.html { redirect_to location_after_save, notice: message }
